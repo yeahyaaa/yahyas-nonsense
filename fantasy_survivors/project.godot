@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; but we're creating this programmatically.
+
+[application]
+
+config/name="Fantasy Survivors"
+config/description="A 2.5D vampire survivors-like game set in fantasy middle ages"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/core/game_manager.gd"
+PlayerStats="*res://scripts/core/player_stats.gd"
+AudioManager="*res://scripts/core/audio_manager.gd"
+SaveManager="*res://scripts/core/save_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="player_projectiles"
+2d_physics/layer_4="enemy_projectiles"
+2d_physics/layer_5="pickups"
+2d_physics/layer_6="chests"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.1, 0.1, 0.15, 1)

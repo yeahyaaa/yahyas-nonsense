@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://customize001"]
+
+[ext_resource type="Script" path="res://scripts/ui/character_customization.gd" id="1_custom"]
+
+[node name="CharacterCustomization" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_custom")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.12, 0.15, 1)
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="PreviewPanel" type="PanelContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewContainer" type="Control" parent="HBox/PreviewPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OptionsPanel" type="ScrollContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBox" type="VBoxContainer" parent="HBox/OptionsPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="ClassLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Class"
+
+[node name="ClassSelector" type="OptionButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ClassDescription" type="Label" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="Separator1" type="HSeparator" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="RaceLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Race"
+
+[node name="RaceSelector" type="OptionButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BodyLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Body Type"
+
+[node name="BodySelector" type="OptionButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HairLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Hair Style"
+
+[node name="HairSelector" type="OptionButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Armor Set"
+
+[node name="ArmorSelector" type="OptionButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Separator2" type="HSeparator" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="SkinLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Skin Color"
+
+[node name="SkinColorPicker" type="ColorPickerButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HairColorLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Hair Color"
+
+[node name="HairColorPicker" type="ColorPickerButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PrimaryLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Primary Color"
+
+[node name="PrimaryColorPicker" type="ColorPickerButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SecondaryLabel" type="Label" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+text = "Secondary Color"
+
+[node name="SecondaryColorPicker" type="ColorPickerButton" parent="HBox/OptionsPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Separator3" type="HSeparator" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="ButtonBox" type="HBoxContainer" parent="HBox/OptionsPanel/VBox"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HBox/OptionsPanel/VBox/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACK"
+
+[node name="SaveButton" type="Button" parent="HBox/OptionsPanel/VBox/ButtonBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE"

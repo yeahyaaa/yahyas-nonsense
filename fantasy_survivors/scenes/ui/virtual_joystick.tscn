@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://joystick001"]
+
+[ext_resource type="Script" path="res://scripts/ui/virtual_joystick.gd" id="1_joystick"]
+
+[node name="VirtualJoystick" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 200.0
+script = ExtResource("1_joystick")
+max_distance = 64.0
+
+[node name="Base" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 36.0
+offset_right = 164.0
+offset_bottom = 164.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BaseCircle" type="ColorRect" parent="Base"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.25, 0.6)
+
+[node name="Knob" type="TextureRect" parent="Base"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 89.0
+offset_bottom = 89.0
+
+[node name="KnobCircle" type="ColorRect" parent="Base/Knob"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5, 0.5, 0.6, 0.9)

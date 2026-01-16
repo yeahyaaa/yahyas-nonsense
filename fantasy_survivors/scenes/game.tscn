@@ -1,0 +1,326 @@
+[gd_scene load_steps=6 format=3 uid="uid://game001"]
+
+[ext_resource type="Script" path="res://scripts/core/game_scene.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://player001" path="res://scenes/characters/player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/systems/enemy_spawner.gd" id="3_spawner"]
+[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="4_hud"]
+[ext_resource type="Script" path="res://scripts/ui/level_up_ui.gd" id="5_levelup"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+player_scene = ExtResource("2_player")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground" type="ColorRect" parent="World"]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.15, 0.18, 0.12, 1)
+
+[node name="EnemySpawner" type="Node2D" parent="World"]
+script = ExtResource("3_spawner")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_hud")
+
+[node name="TopBar" type="HBoxContainer" parent="HUD"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1060.0
+offset_bottom = 80.0
+theme_override_constants/separation = 20
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100 / 100"
+
+[node name="XPBar" type="ProgressBar" parent="HUD/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 10.0
+show_percentage = false
+
+[node name="LevelLabel" type="Label" parent="HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. 1"
+
+[node name="TimerLabel" type="Label" parent="HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "00:00"
+
+[node name="BottomBar" type="HBoxContainer" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="KillLabel" type="Label" parent="HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Kills: 0"
+
+[node name="GoldLabel" type="Label" parent="HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gold: 0"
+
+[node name="MoveJoystick" type="Control" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -220.0
+offset_right = 220.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="Base" type="ColorRect" parent="HUD/MoveJoystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.25, 0.5)
+
+[node name="AimJoystick" type="Control" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -220.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Base" type="ColorRect" parent="HUD/AimJoystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.2, 0.2, 0.5)
+
+[node name="PauseButton" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+grow_horizontal = 0
+text = "||"
+
+[node name="LevelUpUI" type="CanvasLayer" parent="."]
+layer = 10
+script = ExtResource("5_levelup")
+
+[node name="Background" type="ColorRect" parent="LevelUpUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Container" type="VBoxContainer" parent="LevelUpUI"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="LevelUpUI/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LEVEL UP!"
+horizontal_alignment = 1
+
+[node name="OptionsContainer" type="HBoxContainer" parent="LevelUpUI/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="VBox" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu/VBox"]
+layout_mode = 2
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBox"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/VBox"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="GameOverUI" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="GameOverUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0, 0, 0.9)
+
+[node name="VBox" type="VBoxContainer" parent="GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverUI/VBox"]
+layout_mode = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameOverUI/VBox"]
+layout_mode = 2
+text = "RETRY"
+
+[node name="MenuButton" type="Button" parent="GameOverUI/VBox"]
+layout_mode = 2
+text = "MENU"
+
+[node name="VictoryUI" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="VictoryUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.2, 0, 0.9)
+
+[node name="VBox" type="VBoxContainer" parent="VictoryUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VictoryUI/VBox"]
+layout_mode = 2
+text = "VICTORY!"
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VictoryUI/VBox"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="MenuButton" type="Button" parent="VictoryUI/VBox"]
+layout_mode = 2
+text = "MENU"
